@@ -8,16 +8,16 @@ let
   sources = import ./nix/sources.nix {};
 in
 { nixpkgs   ? import (sources.nixpkgs) {}
-, bootghc   ? "ghc922"
+, bootghc   ? "ghc865"
 , version   ? "9.3"
 , hadrianCabal ? (builtins.getEnv "PWD") + "/hadrian/hadrian.cabal"
 , nixpkgs-unstable ? import (sources.nixpkgs-unstable) {}
 , useClang  ? false  # use Clang for C compilation
-, withLlvm  ? false
+, withLlvm  ? true
 , withDocs  ? true
 , withGhcid ? false
-, withIde   ? false
-, withHadrianDeps ? false
+, withIde   ? true
+, withHadrianDeps ? true
 , withDwarf  ? nixpkgs.stdenv.isLinux  # enable libdw unwinding support
 , withNuma   ? nixpkgs.stdenv.isLinux
 , withDtrace ? nixpkgs.stdenv.isLinux
